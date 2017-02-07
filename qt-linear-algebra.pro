@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = qt-linear-algebra
 TEMPLATE = app
@@ -25,9 +25,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    ../qcustomplot/qcustomplot.cpp
+    qcustomplot.cpp
 
 HEADERS  += mainwindow.h \
-    ../qcustomplot/qcustomplot.h
+    qcustomplot.h
 
 FORMS    += mainwindow.ui
