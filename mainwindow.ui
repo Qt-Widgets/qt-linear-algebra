@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>221</width>
-      <height>91</height>
+      <width>217</width>
+      <height>84</height>
      </rect>
     </property>
     <property name="verticalScrollBarPolicy">
@@ -48,8 +48,8 @@
      <rect>
       <x>260</x>
       <y>0</y>
-      <width>221</width>
-      <height>91</height>
+      <width>217</width>
+      <height>84</height>
      </rect>
     </property>
     <property name="verticalScrollBarPolicy">
