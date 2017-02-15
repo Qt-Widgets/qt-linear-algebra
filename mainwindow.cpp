@@ -4,31 +4,41 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    vec1(nullptr),
+    vec2(nullptr)
 {
     ui->setupUi(this);
 
     // set the user interactions for the matrix plot
-    //QCP::Interactions
-    ui->matrixPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+    ui->mainGraph->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+
+
+    vec1 = new QCPItemLine(ui->mainGraph);
+    vec1->setPen(QPen(QColor(66, 244, 66)));
+    vec1->setHead(QCPLineEnding::esSpikeArrow);
+    vec1->start->setCoords(0, 0);
+    vec1->end->setCoords(0, 0);
+
+    vec2 = new QCPItemLine(ui->mainGraph);
+    vec2->setPen(QPen(QColor(244, 66, 66)));
+    vec2->setHead(QCPLineEnding::esSpikeArrow);
+    vec2->start->setCoords(0, 0);
+    vec2->end->setCoords(0, 0);
 }
 
 MainWindow::~MainWindow()
 {
+    delete vec1;
+    delete vec2;
     delete ui;
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-    // define the first box
-    QCPItemRect* matrix1 = new QCPItemRect(ui->matrixPlot);
-    QPointF matrix1TopLeft(ui->matrix1->item(1, 0)->text().toDouble(), ui->matrix1->item(0, 0)->text().toDouble());
-    QPointF matrix1BottomRight(ui->matrix1->item(1, 1)->text().toDouble(), ui->matrix1->item(0, 1)->text().toDouble());
-    matrix1->topLeft->setCoords(matrix1TopLeft);
-    matrix1->bottomRight->setCoords(matrix1BottomRight);
-
-    ui->matrixPlot->replot();
-
-    // clean up
-    delete matrix1;
+    QPointF vp1(ui->vector1->item(0, 0)->text().toDouble(), ui->vector1->item(1, 0)->text().toDouble());
+    QPointF vp2(ui->vector2->item(0, 0)->text().toDouble(), ui->vector2->item(1, 0)->text().toDouble());
+    vec1->end->setCoords(vp1);
+    vec2->end->setCoords(vp2);
+    ui->mainGraph->replot();
 }

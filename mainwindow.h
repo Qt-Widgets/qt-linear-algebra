@@ -22,6 +22,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QCPItemLine *vec1, *vec2;
 };
 
 #endif // MAINWINDOW_H
